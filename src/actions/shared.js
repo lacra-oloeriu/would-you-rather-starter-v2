@@ -7,6 +7,7 @@ const AUTHED_ID = 'tylermcginnis'
 
 
 export function handleInitialData() {
+  console.log("Shared handle initial data")
   return (dispatch ) => {
     return getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users));
