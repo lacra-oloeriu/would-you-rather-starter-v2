@@ -6,6 +6,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
+import 'bootstrap/dist/css/bootstrap.css'
 //import rootReducer from './reducers/index'
 
 const store = createStore (reducer, middleware)
