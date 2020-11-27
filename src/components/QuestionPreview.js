@@ -1,28 +1,23 @@
 import React, { Component } from 'react'
 import { Row, Col, Image, Card, Button, Container } from 'react-bootstrap'
-
 import { ReactComponent as ReactPlaceholder } from '../images/paceholder.svg'
+import styles from "./Question.module.css"
+var placeholder = require("../images/paceholder.svg");
 
 
 class QuestionPreview extends Component {
-
   render() {
     return (
-      <Container>
-        <Row>
-          Name and Sirname askes:
-        </Row>
+      <Container className={styles.classtest}>
+        <Row>Name Sirname askes:</Row>
         <Row className="justify-content-md-center">
           <Col>
-            {/* <Image src="images/paceholder.svg" /> */}
-            <ReactPlaceholder />
+            <Image src={placeholder} roundedCircle />
           </Col>
-          <Col>
-            The content of the big column
-          </Col>
+          <Col>the content of the big column</Col>
         </Row>
       </Container>
-    )
+    );
   }
 }
 

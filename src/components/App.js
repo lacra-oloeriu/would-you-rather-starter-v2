@@ -5,6 +5,7 @@ import { Container, Row, Col, Navbar, Nav,Link } from 'react-bootstrap'
 import QuestionNav from './QuestionNav'
 import QuestionPreviewContainer from './QuestionPreviewContainer'
 import QuestionNavbar from './QuestionNavbar'
+import "holderjs"
 
 class App extends Component {
     componentDidMount() {

@@ -16,6 +16,8 @@ import {
   }
   
   export function saveQuestion(question) {
+    console.log('saveQuestion')
+    console.log('info')
     return _saveQuestion(question);
   }
   
