@@ -5,7 +5,7 @@ import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap'
 
 class QuestionPreviewContainer extends Component {
   render() {
-    console.log(this.props)
+    
     return (
       <div>
         QuestionPreviewContainer

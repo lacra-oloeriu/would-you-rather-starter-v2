@@ -13,7 +13,7 @@ export function formatQuestion (question, author) {
 }
 
 export const fakeAuth = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   authentificate(cb) {
       this.isAuthenticated = true
       setTimeout(cb,100) //fake async
