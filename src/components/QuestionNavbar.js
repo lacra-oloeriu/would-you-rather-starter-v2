@@ -15,8 +15,13 @@ class QuestionNavbar extends Component {
 
         <Nav className="mr-auto">
           <NavItem >
-            <Link to="/createQuestion" >
+            <Link to="/add" >
               New Question</Link>
+          </NavItem>
+          <NavItem>-</NavItem>
+          <NavItem >
+            <Link to="/leaderboard" >
+              Leaderboard</Link>
           </NavItem>
         </Nav>
 

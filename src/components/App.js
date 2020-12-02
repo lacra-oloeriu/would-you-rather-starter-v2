@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import { fakeAuth } from '../utils/helpers'
 import Login from './Login'
 import CreateQuestion from './CreateQuestion'
+import Leaderboard from './Leaderboard';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -58,9 +59,13 @@ class App extends Component {
                                             )}
                                         />
                                         <PrivateRoute
-                                            path="/createQuestion"
+                                            path="/add"
                                             exact
                                             component={CreateQuestion} />
+                                        <PrivateRoute
+                                            path="/leaderboard"
+                                            exact
+                                            component={Leaderboard} />
                                     </Switch>
                                 </div>
                             )
@@ -74,13 +79,13 @@ class App extends Component {
     }
 }
 
-    
-    
 
-function mapStateToProps({ authedUser,users}) {
+
+
+function mapStateToProps({ authedUser, users }) {
     return {
         loading: authedUser === null,
-        users:users
+        users: users
     }
 }
 
