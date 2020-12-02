@@ -1,14 +1,14 @@
 import React ,{Component} from 'react'
 
-class NoUsersLoggedIn extends Component {
+class LoadingComponent extends Component {
     render() {
         return (
             <div>
-                No user logged in  
+                Loading ...  
             </div>
         )
 
     }
 }
 
-export default NoUsersLoggedIn
+export default LoadingComponent

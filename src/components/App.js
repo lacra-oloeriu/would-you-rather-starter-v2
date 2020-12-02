@@ -5,10 +5,11 @@ import { Container, Row, Col, Navbar, Nav, Link } from 'react-bootstrap'
 import QuestionPreviewContainer from './QuestionPreviewContainer'
 import QuestionNavbar from './QuestionNavbar'
 import "holderjs"
-import NoUsersLoggedIn from './NoUsersLoggedIn'
+import LoadingComponent from './LoadingComponent'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { fakeAuth } from '../utils/helpers'
 import Login from './Login'
+import CreateQuestion from './CreateQuestion'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -42,7 +43,7 @@ class App extends Component {
                     <QuestionNavbar />
                     <div>
                         {this.props.loading === true
-                            ? <NoUsersLoggedIn />
+                            ? <LoadingComponent />
                             : (
                                 <div>
                                     <Switch>
@@ -56,6 +57,10 @@ class App extends Component {
                                                 <Login {...props} />
                                             )}
                                         />
+                                        <PrivateRoute
+                                            path="/createQuestion"
+                                            exact
+                                            component={CreateQuestion} />
                                     </Switch>
                                 </div>
                             )
