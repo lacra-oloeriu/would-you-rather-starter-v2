@@ -55,7 +55,7 @@ class App extends Component {
                                         <Route
                                             path="/login"
                                             component={props => (
-                                                <Login />
+                                                <Login {...props} />
                                             )}
                                         />
                                     </Switch>
@@ -74,9 +74,10 @@ class App extends Component {
     
     
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser,users}) {
     return {
-        loading: authedUser === null
+        loading: authedUser === null,
+        users:users
     }
 }
 
