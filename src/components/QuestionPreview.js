@@ -6,7 +6,10 @@ var placeholder = require("../images/paceholder.svg");
 
 
 class QuestionPreview extends Component {
+  
   render() {
+    const {question} = this.props
+    console.log(question)
     return (
       <Card>
         <Card.Header>Would you rather</Card.Header>

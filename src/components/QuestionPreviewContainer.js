@@ -5,12 +5,15 @@ import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap'
 
 class QuestionPreviewContainer extends Component {
   render() {
-    
+      const{questions} = this.props
+     function getQuestion (id) {
+     return questions [id]
+    }
     return (
       <div>
         QuestionPreviewContainer
         {this.props.questionIds.map((id) => (
-            <QuestionPreview/>
+            <QuestionPreview question = {getQuestion(id)}/>
           ))}
         
       </div>
@@ -20,7 +23,8 @@ class QuestionPreviewContainer extends Component {
 
 function mapStateToProps({ questions }) {
   return {
-    questionIds: Object.keys(questions)
+    questionIds: Object.keys(questions),
+    questions
   }
 }
 
