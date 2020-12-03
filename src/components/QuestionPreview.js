@@ -8,15 +8,31 @@ var placeholder = require("../images/paceholder.svg");
 class QuestionPreview extends Component {
   render() {
     return (
-      <Container className={styles.classtest}>
-        <Row>Name Sirname askes:</Row>
-        <Row className="justify-content-md-center">
-          <Col>
-            <Image src={placeholder} roundedCircle />
-          </Col>
-          <Col>the content of the big column</Col>
-        </Row>
-      </Container>
+      <Card>
+        <Card.Header>Would you rather</Card.Header>
+        <Card.Body>
+          <Row>
+            <Col sm={4}><Card.Title> Author name</Card.Title></Col>
+
+
+            <Col sm={8}> <Card.Text>
+
+              Do you like sports of!
+                </Card.Text>
+              <Card.Text>
+                Do you like to eat!
+                  </Card.Text>
+              <div className=" d-flex justify-content-end">
+                <Button variant="primary">Submit</Button>
+              </div>
+            </Col>
+
+
+          </Row>
+
+        </Card.Body>
+      </Card>
+
     );
   }
 }
