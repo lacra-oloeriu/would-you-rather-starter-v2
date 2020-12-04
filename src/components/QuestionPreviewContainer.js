@@ -14,8 +14,6 @@ class QuestionPreviewContainer extends Component {
     function getAuthor(qId) {
       let question = getQuestion(qId);
       let authorId = question.author;
-      console.log("debag author", authorId);
-      console.log("full debug", users[authorId]);
       return users[authorId];
     }
 
