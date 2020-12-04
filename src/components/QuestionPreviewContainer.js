@@ -5,25 +5,36 @@ import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 
 class QuestionPreviewContainer extends Component {
   render() {
-    const { questions } = this.props;
+    const { questions, users } = this.props;
+
     function getQuestion(id) {
       return questions[id];
     }
+
+    function getAuthor(qId) {
+      let question = getQuestion(qId);
+      let authorId = question.author;
+      console.log("debag author", authorId);
+      console.log("full debug", users[authorId]);
+      return users[authorId];
+    }
+
     return (
       <div>
         QuestionPreviewContainer
         {this.props.questionIds.map((id) => (
-          <QuestionPreview question={getQuestion(id)} />
+          <QuestionPreview question={getQuestion(id)} author={getAuthor(id)} />
         ))}
       </div>
     );
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users }) {
   return {
     questionIds: Object.keys(questions),
     questions,
+    users,
   };
 }
 
