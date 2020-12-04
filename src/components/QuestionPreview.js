@@ -20,13 +20,14 @@ class QuestionPreview extends Component {
 
             <Col sm={8}> <Card.Text>
 
-              Do you like sports of!
+              Do you like sports !
                 </Card.Text>
+                    or
               <Card.Text>
                 Do you like to eat!
                   </Card.Text>
               <div className=" d-flex justify-content-end">
-                <Button variant="primary">Submit</Button>
+                <Button variant="primary">View</Button>
               </div>
             </Col>
 
