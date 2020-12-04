@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Row, Col, Image, Card, Button, Container } from "react-bootstrap";
 import { ReactComponent as ReactPlaceholder } from "../images/paceholder.svg";
 import styles from "./Question.module.css";
+import {Link} from 'react-router-dom';
 var placeholder = require("../images/paceholder.svg");
+
 
 class QuestionPreview extends Component {
   render() {
@@ -22,7 +24,10 @@ class QuestionPreview extends Component {
               or
               <Card.Text> {question.optionTwo.text}</Card.Text>
               <div className=" d-flex justify-content-end">
+                <Link to = {"/question/" + question.id}>
                 <Button variant="primary">View</Button>
+                </Link>
+                
               </div>
             </Col>
           </Row>
