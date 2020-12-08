@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { handleAddQuestion } from "../actions/questions";
 
 class CreateQuestion extends Component {
   render() {
@@ -18,6 +19,7 @@ class CreateQuestion extends Component {
 
     console.log("create questions", this.props.questions);
     console.log("create authedUserId ", this.props.authedUserId);
+    const { dispatch } = this.props;
 
     function handleOptionOneChange(e) {
       optionOne = e.target.value;
@@ -29,7 +31,8 @@ class CreateQuestion extends Component {
 
     function submitQuestion() {
       if (optionOne && optionTwo) {
-        console.log("time to dispach create question",optionOne,optionTwo);
+        console.log("time to dispach create question", optionOne, optionTwo);
+        dispatch(handleAddQuestion(optionOne, optionTwo));
       } else {
         console.log("Data is missing)");
       }
