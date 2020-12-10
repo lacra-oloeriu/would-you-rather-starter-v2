@@ -26,6 +26,8 @@ class ViewQuestion extends Component {
     const user = getUser(authedUserId);
     console.log("Theuser", user);
 
+    const author = getUser(question.author)
+
     function getAllVotes(question) {
       let allVotes = [];
       allVotes = allVotes.concat(question.optionOne.votes);
@@ -46,7 +48,7 @@ class ViewQuestion extends Component {
     if (userVoted(question, authedUserId)) {
       content = <QuestionResults />;
     } else {
-      content = <QuestionPoll />;
+      content = <QuestionPoll user={user} question={question} author={author}/>;
     }
 
     return (
