@@ -17,7 +17,7 @@ class ViewQuestion extends Component {
     }
 
     const question = getQuestion(this.props.match.params.id);
-    console.log("theQuestion", question);
+    console.log("theQuestion debug", question);
 
     function getUser(userId) {
       return users[userId];
@@ -26,7 +26,7 @@ class ViewQuestion extends Component {
     const user = getUser(authedUserId);
     console.log("Theuser", user);
 
-    const author = getUser(question.author)
+    const author = getUser(question.author);
 
     function getAllVotes(question) {
       let allVotes = [];
@@ -48,7 +48,9 @@ class ViewQuestion extends Component {
     if (userVoted(question, authedUserId)) {
       content = <QuestionResults />;
     } else {
-      content = <QuestionPoll user={user} question={question} author={author}/>;
+      content = (
+        <QuestionPoll user={user} question={question} author={author} />
+      );
     }
 
     return (
@@ -61,6 +63,7 @@ class ViewQuestion extends Component {
 }
 
 function mapStateToProps({ questions, users, authedUser }) {
+  console.log("question mapStateToProps", questions);
   return {
     questions,
     users,

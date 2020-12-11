@@ -21,7 +21,7 @@ import {
     return _saveQuestion(question);
   }
   
-  export function saveQuestionAnswer(authedUser, qid, answer) {
+  export function saveQuestionAnswer(info) {
     //console.log('info', { authedUser, qid, answer });
-    return _saveQuestionAnswer({ authedUser, qid, answer });
+    return _saveQuestionAnswer(info);
   }

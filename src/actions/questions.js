@@ -1,7 +1,9 @@
-import { saveQuestion } from "../utils/api";
+import { saveQuestion,saveQuestionAnswer } from "../utils/api";
+
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
+export const ANSWER_QUESTION ='ANSWER_QUESTION'
 
 export function receiveQuestions(questions) {
   return {
@@ -17,6 +19,15 @@ function addQuestion(question) {
   };
 }
 
+function answerQuestion({authedUser,qid,answer}) {
+  return{
+    type: ANSWER_QUESTION,
+    authedUser,
+    qid,
+    answer
+  }
+}
+
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
@@ -29,4 +40,15 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       dispatch(addQuestion(question));
     });
   };
+}
+
+
+export function handleAnswerQuestion(info) {
+  return(dispatch) => {
+    dispatch(answerQuestion(info))
+    return saveQuestionAnswer(info)
+    .catch((e) =>{
+      console.warn( 'Error in handleAnswerQuestion', e)
+    })
+  }
 }

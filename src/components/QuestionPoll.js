@@ -1,8 +1,49 @@
 import React, { Component } from "react";
-import { Row, Col, Image, Card, Button, Container } from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Image,
+  Card,
+  Button,
+  Container,
+  Form,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { handleAnswerQuestion } from "../actions/questions";
 
 class QuestionPoll extends Component {
+  gootToGo = false;
+  answer = undefined;
+  authedUser = this.props.user;
+  qid = this.props.question.id;
+
+  setOptionOne() {
+    console.log("optionOne");
+    this.answer = "optionOne";
+    this.gootToGo = true;
+  }
+
+  setOptionTwo() {
+    console.log("optionTwo");
+    this.answer = "optionTwo";
+    this.gootToGo = true;
+  }
+
+  handleSubmit() {
+    const { dispatch } = this.props;
+    const { authedUser, qid, answer } = this;
+    if (this.gootToGo) {
+      dispatch(
+        handleAnswerQuestion({
+          authedUser:authedUser.id,
+          qid,
+          answer,
+        })
+      );
+    }
+  }
+
   render() {
     const { question, author, user } = this.props;
     console.log("pool log ", question, author, user);
@@ -16,11 +57,25 @@ class QuestionPoll extends Component {
             </Col>
 
             <Col sm={8}>
-              <Card.Text> OptionOne</Card.Text>
+              <Form.Check
+                type="radio"
+                label="Option One"
+                name="FormName"
+                id="FormId"
+                onChange={() => this.setOptionOne()}
+              />
               or
-              <Card.Text> OptionTwo</Card.Text>
+              <Form.Check
+                type="radio"
+                label="Option Two"
+                name="FormName"
+                id="FormId"
+                onChange={() => this.setOptionTwo()}
+              />
               <div className=" d-flex justify-content-end">
-                <Button variant="primary">Vote</Button>
+                <Button variant="primary" onClick={() => this.handleSubmit()}>
+                  Vote
+                </Button>
               </div>
             </Col>
           </Row>
@@ -30,4 +85,8 @@ class QuestionPoll extends Component {
   }
 }
 
-export default QuestionPoll;
+function mapStateToProps({}) {
+  return {};
+}
+
+export default connect(mapStateToProps)(QuestionPoll);
