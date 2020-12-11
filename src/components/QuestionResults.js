@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Card} from "react-bootstrap";
+import { Row, Col, Card,Image} from "react-bootstrap";
 import OptionResult from './OptionResult';
 
 class QuestionResults extends Component {
@@ -13,6 +13,8 @@ class QuestionResults extends Component {
           <Row>
             <Col sm={4}>
               <Card.Title> {author.name}</Card.Title>
+              <Image src ={author.avatarURL}
+              roundedCircle height ='100px'/>
             </Col>
 
             <Col sm={8}>
