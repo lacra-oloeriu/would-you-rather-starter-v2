@@ -1,16 +1,29 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
+import { Row, Col, Card} from "react-bootstrap";
+import OptionResult from './OptionResult';
 
 class QuestionResults extends Component {
+  render() {
+    const { question, author } = this.props;
+    console.log('QuestionResults data ',author)
+    return (
+      <Card>
+        <Card.Header>Would you rather</Card.Header>
+        <Card.Body>
+          <Row>
+            <Col sm={4}>
+              <Card.Title> {author.name}</Card.Title>
+            </Col>
 
-    render() {
-
-        return ( 
-            <div>
-                QuestionResults
-            </div>
-        )
-    }
-    
+            <Col sm={8}>
+              <OptionResult/>
+              ********
+              <OptionResult/>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+    );
+  }
 }
-
-export default QuestionResults
+export default QuestionResults;

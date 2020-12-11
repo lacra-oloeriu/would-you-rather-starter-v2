@@ -46,7 +46,7 @@ class ViewQuestion extends Component {
 
     let content;
     if (userVoted(question, authedUserId)) {
-      content = <QuestionResults />;
+      content = <QuestionResults author={author} question={question}/>;
     } else {
       content = (
         <QuestionPoll user={user} question={question} author={author} />
