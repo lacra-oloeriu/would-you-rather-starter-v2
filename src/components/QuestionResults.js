@@ -16,9 +16,9 @@ class QuestionResults extends Component {
             </Col>
 
             <Col sm={8}>
-              <OptionResult/>
+              <OptionResult question ={question} author={author} option ='optionOne'/>
               ********
-              <OptionResult/>
+              <OptionResult question ={question} author={author} option ='optionTwo'/>
             </Col>
           </Row>
         </Card.Body>
