@@ -17,6 +17,7 @@ import Login from "./Login";
 import CreateQuestion from "./CreateQuestion";
 import Leaderboard from "./Leaderboard";
 import ViewQuestion from "./ViewQuestion";
+import NoMatch from "./NoMatch";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -72,6 +73,7 @@ class App extends Component {
                     exact
                     component={ViewQuestion}
                   />
+                  <PrivateRoute component={ViewQuestion} />
                 </Switch>
               </div>
             )}
