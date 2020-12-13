@@ -3,13 +3,21 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import {  Navbar, Nav, NavItem } from "react-bootstrap";
+import { Navbar, Nav, NavItem } from "react-bootstrap";
 
 class QuestionNavbar extends Component {
   render() {
+    const { authedUser, users } = this.props;
+
+    let logInSwitsh = "login";
+    let user = users[authedUser];
+    if (user) {
+      logInSwitsh = user.name;
+    }
+
     return (
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
-        <Navbar.Brand >
+        <Navbar.Brand>
           <Link to="/">Would you rather</Link>
         </Navbar.Brand>
 
@@ -27,7 +35,7 @@ class QuestionNavbar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            <Nav.Link href="/login">login/switch</Nav.Link>
+            <Nav.Link href="/login">{logInSwitsh}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -40,6 +48,7 @@ function mapStateToProps({ questions, authedUser, users }) {
     questionIds: Object.keys(questions),
     authedUserObject: users[authedUser],
     users: users,
+    authedUser,
   };
 }
 
