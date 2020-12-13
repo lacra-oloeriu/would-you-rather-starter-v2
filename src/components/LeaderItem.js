@@ -1,31 +1,30 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Row, Col, Image, Card, Table,Badge } from "react-bootstrap";
+import { Row, Col, Image, Card, Table, Badge } from "react-bootstrap";
 
 class LeaderItem extends Component {
   render() {
-    const { questions, users } = this.props;
-    console.log(questions, users);
+    const { user, pointObject } = this.props;
+    console.log(user, pointObject);
     return (
       <Card>
-        <Card.Header>author name</Card.Header>
+        <Card.Header>{user.name}</Card.Header>
         <Card.Body>
           <Row>
             <Col sm={4}>
-              <Image roundedCircle height="100px" />
+              <Image src={user.avatarURL} roundedCircle height="100px" />
             </Col>
 
             <Col sm={5}>
               <Table hover size="sm">
                 <tbody>
                   <tr>
-                    <td>Answerd Questions</td>
-                    <td>5000</td>
+                    <td>Answerd question</td>
+                    <td>{pointObject.answerd}</td>
                   </tr>
 
                   <tr>
-                    <td>Created Questions</td>
-                    <td>6000</td>
+                    <td>Created questions</td>
+                    <td>{pointObject.created}</td>
                   </tr>
                 </tbody>
               </Table>
@@ -34,10 +33,7 @@ class LeaderItem extends Component {
             <Col sm={3}>
               <Card.Title>Score</Card.Title>
               <Card.Title>
-                  <Badge variant ='secondary'>
-                    800
-                  </Badge>
-
+                <Badge variant="secondary">{pointObject.points}</Badge>
               </Card.Title>
             </Col>
           </Row>
@@ -47,11 +43,4 @@ class LeaderItem extends Component {
   }
 }
 
-function mapSateToProps({ questions, users }) {
-  return {
-    questions,
-    users,
-  };
-}
-
-export default connect(mapSateToProps)(LeaderItem);
+export default LeaderItem;
