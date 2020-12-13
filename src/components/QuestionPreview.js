@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import { Row, Col, Image, Card, Button, Container } from "react-bootstrap";
-import { ReactComponent as ReactPlaceholder } from "../images/paceholder.svg";
-import styles from "./Question.module.css";
+import { Row, Col, Image, Card, Button } from "react-bootstrap";
 import {Link} from 'react-router-dom';
-var placeholder = require("../images/paceholder.svg");
+
 
 
 class QuestionPreview extends Component {
   render() {
     const { question, author } = this.props;
-    console.log(question);
     return (
       <Card>
         <Card.Header>Would you rather</Card.Header>

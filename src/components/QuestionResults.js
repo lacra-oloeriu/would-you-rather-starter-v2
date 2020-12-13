@@ -5,7 +5,6 @@ import OptionResult from './OptionResult';
 class QuestionResults extends Component {
   render() {
     const { question, author } = this.props;
-    console.log('QuestionResults data ',author)
     return (
       <Card>
         <Card.Header>Would you rather</Card.Header>

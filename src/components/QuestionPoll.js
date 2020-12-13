@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Col,
-  Image,
-  Card,
-  Button,
-  Container,
-  Form,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { handleAnswerQuestion } from "../actions/questions";
 
@@ -19,13 +10,11 @@ class QuestionPoll extends Component {
   qid = this.props.question.id;
 
   setOptionOne() {
-    console.log("optionOne");
     this.answer = "optionOne";
     this.gootToGo = true;
   }
 
   setOptionTwo() {
-    console.log("optionTwo");
     this.answer = "optionTwo";
     this.gootToGo = true;
   }
@@ -36,7 +25,7 @@ class QuestionPoll extends Component {
     if (this.gootToGo) {
       dispatch(
         handleAnswerQuestion({
-          authedUser:authedUser.id,
+          authedUser: authedUser.id,
           qid,
           answer,
         })
@@ -45,8 +34,6 @@ class QuestionPoll extends Component {
   }
 
   render() {
-    const { question, author, user } = this.props;
-    console.log("pool log ", question, author, user);
     return (
       <Card>
         <Card.Header>Would you rather</Card.Header>
@@ -85,8 +72,8 @@ class QuestionPoll extends Component {
   }
 }
 
-function mapStateToProps({}) {
-  return {};
+function mapStateToProps(state) {
+  return state;
 }
 
 export default connect(mapStateToProps)(QuestionPoll);

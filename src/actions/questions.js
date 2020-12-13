@@ -36,7 +36,6 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       optionTwoText,
       author: authedUser,
     }).then((question) => {
-      console.log("New formated question", question);
       dispatch(addQuestion(question));
     });
   };

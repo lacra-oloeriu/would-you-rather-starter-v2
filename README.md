@@ -1,4 +1,17 @@
-# Would You Rather Project
+# Would You Rather : Lacramioara Oloeriu
+
+## Availeble  start Scripts
+
+To install necesasery dependencyes you need to run only first time 
+``` bash 
+npm install
+```
+to run the project 
+```bash
+npm start
+```
+
+## Initial readme provided bu Udacity
 
 This is the starter code for the final assessment project for Udacity's React & Redux course.
 

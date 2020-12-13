@@ -6,7 +6,6 @@ import {
   } from './_DATA.js';
   
   export function getInitialData() {
-    console.log("API get initial data")
     return Promise.all([_getUsers(), _getQuestions()]).then(
       ([users, questions]) => ({
         users,
@@ -16,12 +15,9 @@ import {
   }
   
   export function saveQuestion(question) {
-    console.log('saveQuestion')
-    console.log('info')
     return _saveQuestion(question);
   }
   
   export function saveQuestionAnswer(info) {
-    //console.log('info', { authedUser, qid, answer });
     return _saveQuestionAnswer(info);
   }

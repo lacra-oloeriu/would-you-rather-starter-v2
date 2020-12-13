@@ -7,24 +7,18 @@ import QuestionPoll from "./QuestionPoll";
 class ViewQuestion extends Component {
   render() {
     const { questions, users, authedUserId } = this.props;
-    console.log("authedUserId", authedUserId);
-    console.log("questions", questions);
-    console.log("users", users);
-    console.log("questionId", this.props.match.params.id);
 
     function getQuestion(questionId) {
       return questions[questionId];
     }
 
     const question = getQuestion(this.props.match.params.id);
-    console.log("theQuestion debug", question);
 
     function getUser(userId) {
       return users[userId];
     }
 
     const user = getUser(authedUserId);
-    console.log("Theuser", user);
 
     const author = getUser(question.author);
 
@@ -34,19 +28,15 @@ class ViewQuestion extends Component {
       allVotes = allVotes.concat(question.optionTwo.votes);
       return allVotes;
     }
-    let allVotes = getAllVotes(question);
-    console.log("allVotes", allVotes);
 
     function userVoted(question, userId) {
       let allVotes = getAllVotes(question);
       return allVotes.includes(userId);
     }
 
-    console.log("user voted", userVoted(question, authedUserId));
-
     let content;
     if (userVoted(question, authedUserId)) {
-      content = <QuestionResults author={author} question={question}/>;
+      content = <QuestionResults author={author} question={question} />;
     } else {
       content = (
         <QuestionPoll user={user} question={question} author={author} />
@@ -63,7 +53,6 @@ class ViewQuestion extends Component {
 }
 
 function mapStateToProps({ questions, users, authedUser }) {
-  console.log("question mapStateToProps", questions);
   return {
     questions,
     users,

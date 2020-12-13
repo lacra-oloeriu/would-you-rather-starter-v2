@@ -4,7 +4,6 @@ import { Row, Col, Image, Card, Table, Badge } from "react-bootstrap";
 class LeaderItem extends Component {
   render() {
     const { user, pointObject } = this.props;
-    console.log(user, pointObject);
     return (
       <Card>
         <Card.Header>{user.name}</Card.Header>

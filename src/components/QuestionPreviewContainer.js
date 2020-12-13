@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import QuestionPreview from "./QuestionPreview";
-import { Container, Row, Col, Navbar, Nav, Tab, Tabs } from "react-bootstrap";
+import {  Tab, Tabs } from "react-bootstrap";
 
 class QuestionPreviewContainer extends Component {
   render() {
@@ -39,6 +39,7 @@ class QuestionPreviewContainer extends Component {
           <Tab eventKey="Unanswered" title="Unanswered Question">
             {unanswered.map((id) => (
               <QuestionPreview
+                key={id}
                 question={getQuestion(id)}
                 author={getAuthor(id)}
               />
@@ -47,6 +48,7 @@ class QuestionPreviewContainer extends Component {
           <Tab eventKey="answerd" title="Answerd Question">
             {answerd.map((id) => (
               <QuestionPreview
+                key={id}
                 question={getQuestion(id)}
                 author={getAuthor(id)}
               />

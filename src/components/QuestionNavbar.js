@@ -1,27 +1,25 @@
-import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import { Container, Row, Col, Navbar, Nav, NavItem } from 'react-bootstrap'
+import {  Navbar, Nav, NavItem } from "react-bootstrap";
 
 class QuestionNavbar extends Component {
   render() {
-    console.log(this.props)
     return (
-      <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark" >
-        <Navbar.Brand href="/"><Link to="/" >
-          Would you rather</Link></Navbar.Brand>
+      <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+        <Navbar.Brand >
+          <Link to="/">Would you rather</Link>
+        </Navbar.Brand>
 
         <Nav className="mr-auto">
-          <NavItem >
-            <Link to="/add" >
-              New Question</Link>
+          <NavItem>
+            <Link to="/add">New Question</Link>
           </NavItem>
           <NavItem>-</NavItem>
-          <NavItem >
-            <Link to="/leaderboard" >
-              Leaderboard</Link>
+          <NavItem>
+            <Link to="/leaderboard">Leaderboard</Link>
           </NavItem>
         </Nav>
 
@@ -29,20 +27,19 @@ class QuestionNavbar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            <Nav.Link href="/login">login</Nav.Link>
+            <Nav.Link href="/login">login/switch</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    )
+    );
   }
 }
-
 
 function mapStateToProps({ questions, authedUser, users }) {
   return {
     questionIds: Object.keys(questions),
     authedUserObject: users[authedUser],
-    users: users
+    users: users,
   };
 }
 

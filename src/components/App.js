@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import { Container, Row, Col, Navbar, Nav, Link } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import QuestionPreviewContainer from "./QuestionPreviewContainer";
 import QuestionNavbar from "./QuestionNavbar";
 import "holderjs";
@@ -73,7 +73,8 @@ class App extends Component {
                     exact
                     component={ViewQuestion}
                   />
-                  <PrivateRoute component={ViewQuestion} />
+                  <PrivateRoute 
+                  component={NoMatch} />
                 </Switch>
               </div>
             )}

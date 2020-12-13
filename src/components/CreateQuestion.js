@@ -1,25 +1,14 @@
 import React, { Component } from "react";
-import {
-  Row,
-  Col,
-  Image,
-  Card,
-  Button,
-  Container,
-  Form,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Row, Col, Card, Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class CreateQuestion extends Component {
   render() {
     let optionOne;
     let optionTwo;
 
-    console.log("create questions", this.props.questions);
-    console.log("create authedUserId ", this.props.authedUserId);
     const { dispatch, history } = this.props;
 
     function handleOptionOneChange(e) {
@@ -32,11 +21,8 @@ class CreateQuestion extends Component {
 
     function submitQuestion() {
       if (optionOne && optionTwo) {
-        console.log("time to dispach create question", optionOne, optionTwo);
         dispatch(handleAddQuestion(optionOne, optionTwo));
         history.push("/");
-      } else {
-        console.log("Data is missing)");
       }
     }
     return (
