@@ -3,7 +3,7 @@ import { Col, ProgressBar } from "react-bootstrap";
 
 class OptionResult extends Component {
   render() {
-    const { question, option } = this.props;
+    const { question, option ,author} = this.props;
 
     const countAll =
       question.optionOne.votes.length + question.optionTwo.votes.length;
@@ -12,6 +12,12 @@ class OptionResult extends Component {
 
     const percent = (thisVotes * 100) / countAll;
 
+    const yourVote = () => {
+      if ( question[option].votes.includes(author.id)){
+        return'Your Vote';
+      }
+    }
+
     const progressInstance = (
       <ProgressBar now={percent} label={`${percent} %`} />
     );
@@ -19,6 +25,7 @@ class OptionResult extends Component {
       <Col sm={8}>
         <div> {question[option].text}</div>
         <div> {progressInstance}</div>
+        <div> {yourVote()}</div>
       </Col>
     );
   }
