@@ -2,10 +2,18 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { fakeAuth } from "../utils/helpers";
 
 import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 class QuestionNavbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+    };
+  }
   render() {
     const { authedUser, users } = this.props;
 
@@ -14,6 +22,17 @@ class QuestionNavbar extends Component {
     if (user) {
       logInSwitsh = user.name;
     }
+
+    const processLoginAction = () => {
+      if (fakeAuth.isAuthenticated) {
+        console.log("Processing action", this.state.showModal);
+        this.setState({ showModal: true });
+      }
+    };
+
+    const hideModal = () => {
+      this.setState({ showModal: false });
+    };
 
     return (
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
@@ -35,9 +54,15 @@ class QuestionNavbar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto"></Nav>
           <Nav>
-            <Nav.Link href="/login">{logInSwitsh}</Nav.Link>
+            <NavItem style={{ color: "white" }} onClick={processLoginAction}>
+              --- ---
+            </NavItem>
           </Nav>
         </Navbar.Collapse>
+
+        <Modal show={this.state.showModal} onHide={hideModal}>
+          <Modal.Body>Would you like to logout?</Modal.Body>
+        </Modal>
       </Navbar>
     );
   }
