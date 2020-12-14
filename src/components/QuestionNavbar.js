@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fakeAuth } from "../utils/helpers";
 
-import { Navbar, Nav, NavItem } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
+import { Navbar, Nav, NavItem, ModalFooter } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 
 class QuestionNavbar extends Component {
   constructor(props) {
@@ -15,13 +15,9 @@ class QuestionNavbar extends Component {
     };
   }
   render() {
-    const { authedUser, users } = this.props;
+    const { authedUser, users, history } = this.props;
 
-    let logInSwitsh = "login";
     let user = users[authedUser];
-    if (user) {
-      logInSwitsh = user.name;
-    }
 
     const processLoginAction = () => {
       if (fakeAuth.isAuthenticated) {
@@ -32,6 +28,14 @@ class QuestionNavbar extends Component {
 
     const hideModal = () => {
       this.setState({ showModal: false });
+    };
+
+    const logOut = () => {
+        this.setState({
+          showModal: false,
+        });
+
+      fakeAuth.singout(() => history.push("/"));
     };
 
     return (
@@ -55,13 +59,17 @@ class QuestionNavbar extends Component {
           <Nav className="mr-auto"></Nav>
           <Nav>
             <NavItem style={{ color: "white" }} onClick={processLoginAction}>
-              --- ---
+              {fakeAuth.isAuthenticated === true ? user.name : "--- ---"}
             </NavItem>
           </Nav>
         </Navbar.Collapse>
 
         <Modal show={this.state.showModal} onHide={hideModal}>
           <Modal.Body>Would you like to logout?</Modal.Body>
+          <ModalFooter>
+            <Button onClick ={hideModal} variant ='secondary'>Cancel</Button>
+            <Button onClick={logOut}>Logout</Button>
+          </ModalFooter>
         </Modal>
       </Navbar>
     );
