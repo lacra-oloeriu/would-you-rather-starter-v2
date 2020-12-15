@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import QuestionPreview from "./QuestionPreview";
-import {  Tab, Tabs } from "react-bootstrap";
+import { Tab, Tabs } from "react-bootstrap";
 
 class QuestionPreviewContainer extends Component {
   render() {
@@ -19,6 +19,19 @@ class QuestionPreviewContainer extends Component {
 
     let unanswered = [];
     let answerd = [];
+
+    function compare(a, b) {
+      let qa = questions[a];
+      let qb = questions[b];
+      if (qa.timestamp < qb.timestamp) {
+        return 1;
+      }
+      if (qa.timestamp > qb.timestamp) {
+        return -1;
+      }
+      return 0;
+    }
+    questionIds.sort(compare);
 
     questionIds.forEach((id) => {
       const theQuestion = questions[id];
