@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Card, Button, Form } from "react-bootstrap";
+import { Row, Col, Card, Button, Form,Image } from "react-bootstrap";
 import { connect } from "react-redux";
 import { handleAnswerQuestion } from "../actions/questions";
 
@@ -33,6 +33,8 @@ class QuestionPoll extends Component {
     }
   }
 
+
+
   render() {
     return (
       <Card>
@@ -40,13 +42,15 @@ class QuestionPoll extends Component {
         <Card.Body>
           <Row>
             <Col sm={4}>
-              <Card.Title> Author name</Card.Title>
+              <Card.Title> {this.authedUser.name}</Card.Title>
+              <Image src ={this.authedUser.avatarURL}
+              roundedCircle height ='100px'/>
             </Col>
 
             <Col sm={8}>
               <Form.Check
                 type="radio"
-                label="Option One"
+                label={this.props.question.optionOne.text}
                 name="FormName"
                 id="FormId"
                 onChange={() => this.setOptionOne()}
@@ -54,7 +58,7 @@ class QuestionPoll extends Component {
               or
               <Form.Check
                 type="radio"
-                label="Option Two"
+                label={this.props.question.optionTwo.text}
                 name="FormName"
                 id="FormId"
                 onChange={() => this.setOptionTwo()}
